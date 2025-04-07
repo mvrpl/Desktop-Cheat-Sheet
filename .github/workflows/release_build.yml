@@ -11,8 +11,8 @@ jobs:
       fail-fast: false
       matrix:
         build: [
-          {name: DesktopCheatSheet, platform: windows/amd64, os: windows-latest},
-          {name: DesktopCheatSheet, platform: darwin/universal, os: macos-latest}
+          {name: Desktop-Cheat-Sheet, platform: windows/amd64, os: windows-latest},
+          {name: Desktop-Cheat-Sheet, platform: darwin/universal, os: macos-latest}
         ]
     runs-on: ${{ matrix.build.os }}
     steps:
@@ -26,4 +26,4 @@ jobs:
           build-obfuscate: true
           nsis: true
           go-version: 1.24
-          wails-build-webview2: embed
+          wails-build-webview2: "embed"
