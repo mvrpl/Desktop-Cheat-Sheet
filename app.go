@@ -37,23 +37,24 @@ func (a *App) startup(ctx context.Context) {
 	}
 }
 
-func (a *App) GetPrograms() []string {
+func (a *App) GetPrograms() string {
 	tables := []string{}
 
-	if a.db == nil {
-		return tables
+	if a.db != nil {
+		dbtables, err := a.db.Query("select name from sqlite_master where type = 'table'")
+		check(err)
+
+		for dbtables.Next() {
+			var name string
+			_ = dbtables.Scan(&name)
+			tables = append(tables, name)
+		}
 	}
 
-	dbtables, err := a.db.Query("select name from sqlite_master where type = 'table'")
+	jsonData, err := json.Marshal(tables)
 	check(err)
 
-	for dbtables.Next() {
-		var name string
-		_ = dbtables.Scan(&name)
-		tables = append(tables, name)
-	}
-
-	return tables
+	return string(jsonData)
 }
 
 func (a *App) GetCheatSheet(program string) string {
