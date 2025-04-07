@@ -73,12 +73,24 @@ RequestExecutionLevel user ;
 
 Name "${INFO_PRODUCTNAME}"
 OutFile "..\..\bin\${INFO_PROJECTNAME}-${ARCH}-installer.exe" # Name of the installer's file.
-InstallDir "$PROGRAMFILES64\${INFO_COMPANYNAME}\${INFO_PRODUCTNAME}" # Default installing folder ($PROGRAMFILES is Program Files folder).
+InstallDir "$LOCALAPPDATA\${INFO_COMPANYNAME}\${INFO_PRODUCTNAME}" # Default installing folder ($PROGRAMFILES is Program Files folder).
 ShowInstDetails show # This will always show the installation details.
 
 Function .onInit
    !insertmacro wails.checkArchitecture
 FunctionEnd
+
+Section "Desktop Shortcut" DeskShort
+    CreateShortCut "$DESKTOP\${INFO_PRODUCTNAME}.lnk" "$LOCALAPPDATA\${INFO_COMPANYNAME}\${INFO_PRODUCTNAME}\${PRODUCT_EXECUTABLE}"
+SectionEnd
+
+Section "Start Menu Shortcuts (required)"
+  SectionIn RO
+
+  CreateDirectory "$SMPROGRAMS\${INFO_PRODUCTNAME}"
+  CreateShortcut "$SMPROGRAMS\${INFO_PRODUCTNAME}\Uninstall.lnk" "$INSTDIR\uninstall.exe" "" "$INSTDIR\uninstall.exe" 0
+  CreateShortcut "$SMPROGRAMS\${INFO_PRODUCTNAME}\${INFO_PRODUCTNAME}.lnk" "$INSTDIR\${PRODUCT_EXECUTABLE}" "" "$INSTDIR\${PRODUCT_EXECUTABLE}" 0
+SectionEnd
 
 Section
     !insertmacro wails.setShellContext
@@ -89,9 +101,6 @@ Section
 
     !insertmacro wails.files
 
-    CreateShortcut "$SMPROGRAMS\${INFO_PRODUCTNAME}.lnk" "$INSTDIR\${PRODUCT_EXECUTABLE}"
-    CreateShortCut "$DESKTOP\${INFO_PRODUCTNAME}.lnk" "$INSTDIR\${PRODUCT_EXECUTABLE}"
-
     !insertmacro wails.associateFiles
     !insertmacro wails.associateCustomProtocols
 
@@ -99,14 +108,12 @@ Section
 SectionEnd
 
 Section "uninstall"
-    !insertmacro wails.setShellContext
-
     RMDir /r "$AppData\${PRODUCT_EXECUTABLE}" # Remove the WebView2 DataPath
 
     RMDir /r $INSTDIR
 
-    Delete "$SMPROGRAMS\${INFO_PRODUCTNAME}.lnk"
     Delete "$DESKTOP\${INFO_PRODUCTNAME}.lnk"
+    Delete "$SMPROGRAMS\${INFO_PRODUCTNAME}\*.*"
 
     !insertmacro wails.unassociateFiles
     !insertmacro wails.unassociateCustomProtocols
