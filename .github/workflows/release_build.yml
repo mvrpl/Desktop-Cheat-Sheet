@@ -23,7 +23,6 @@ jobs:
         with:
           build-name: ${{ matrix.build.name }}
           build-platform: ${{ matrix.build.platform }}
-          build-obfuscate: true
           nsis: ${{ contains(matrix.build.os, 'windows') }}
           go-version: 1.24
           wails-build-webview2: "embed"

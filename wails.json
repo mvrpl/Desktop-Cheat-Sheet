@@ -9,5 +9,9 @@
   "author": {
     "name": "Marcos Vinícius Rodrigues Pires de Lima",
     "email": "mvrpl.me@gmail.com"
-  }
+  },
+  "info": {
+    "productVersion": "0.1.0"
+  },
+  "nsisType": "single"
 }
