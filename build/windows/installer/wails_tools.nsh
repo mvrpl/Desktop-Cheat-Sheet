@@ -28,7 +28,7 @@
 !define UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${UNINST_KEY_NAME}"
 
 !ifndef REQUEST_EXECUTION_LEVEL
-    !define REQUEST_EXECUTION_LEVEL "admin"
+    !define REQUEST_EXECUTION_LEVEL "user"
 !endif
 
 RequestExecutionLevel "${REQUEST_EXECUTION_LEVEL}"
