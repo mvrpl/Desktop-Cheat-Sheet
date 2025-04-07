@@ -11,6 +11,8 @@
     "email": "mvrpl.me@gmail.com"
   },
   "info": {
+    "companyName": "mvrpl_br",
+    "productName": "Desktop Cheat Sheet",
     "productVersion": "0.1.0"
   },
   "nsisType": "single"
