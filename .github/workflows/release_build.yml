@@ -11,8 +11,8 @@ jobs:
       fail-fast: false
       matrix:
         build: [
-          {name: wailsTest, platform: windows/amd64, os: windows-latest},
-          {name: wailsTest, platform: darwin/universal, os: macos-latest}
+          {name: DesktopCheatSheet, platform: windows/amd64, os: windows-latest},
+          {name: DesktopCheatSheet, platform: darwin/universal, os: macos-latest}
         ]
     runs-on: ${{ matrix.build.os }}
     steps:
@@ -24,3 +24,6 @@ jobs:
           build-name: ${{ matrix.build.name }}
           build-platform: ${{ matrix.build.platform }}
           build-obfuscate: true
+          nsis: true
+          go-version: 1.24
+          wails-build-webview2: embed
