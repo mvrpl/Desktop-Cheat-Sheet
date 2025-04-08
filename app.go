@@ -73,7 +73,8 @@ func (a *App) GetCheatSheet(program string) string {
 		var session string
 		_ = rows.Scan(&command, &about, &session)
 		commands := map[string]string{
-			command: about,
+			"command": command,
+			"about":   about,
 		}
 		data[session] = append(data[session], commands)
 	}

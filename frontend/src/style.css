@@ -1,7 +1,3 @@
-html {
-    background-color: rgb(226, 226, 226);
-}
-
 body {
     margin: 0;
     display: flex;
@@ -22,37 +18,6 @@ body {
     height: 100vh;
 }
 
-.menu {
-    width: 200px;
-    height: 1000px;
-    background-color: #f4f4f4;
-    padding: 15px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-}
-.menu a {
-    display: block;
-    padding: 10px;
-    text-decoration: none;
-    color: #333;
-}
-.menu a:hover {
-    background-color: #ddd;
-}
-.content_tables {
-    flex-grow: 1;
-    flex: 1;
-    padding: 15px;
-}
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-th, td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: left;
-}
-th {
-    background-color: #f2f2f2;
+.p-datatable .p-datatable-thead {
+    display: none;
 }

@@ -1,6 +1,9 @@
 <script lang="ts" setup>
 import { reactive } from 'vue'
 import { GetPrograms, GetCheatSheet } from '../wailsjs/go/main/App'
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
+import Menu from 'primevue/menu';
 
 const data = reactive({
   programs: [],
@@ -28,13 +31,11 @@ listPrograms()
       <br>
     </div>
     <div v-for="(value, key) in data.currentContent" class="content-area">
-      <h4 id="tabela1">{{ key }}</h4>
-      <table v-for="vvalue in value">
-        <tr v-for="(chv, vle) in vvalue">
-          <td>{{ chv }}</td>
-          <td>{{ vle }}</td>
-        </tr>
-      </table>
+      <h4>{{ key }}</h4>
+      <DataTable :value="value">
+        <Column field="command"></Column>
+        <Column field="about"></Column>
+      </DataTable>
     </div>
   </div>
 </template>
@@ -49,7 +50,6 @@ listPrograms()
 .vertical-menu {
   width: 200px;
   height: 100vh;
-  background-color: #f8f9fa;
   padding: 10px;
   position: fixed;
   overflow-y: scroll;
@@ -60,17 +60,13 @@ listPrograms()
 .vertical-menu a {
   display: block;
   padding: 10px;
-  color: #333;
   text-decoration: none;
-}
-
-.vertical-menu a:hover {
-  background-color: #ddd;
 }
 
 .content-area {
   margin-left: 220px;
-  padding: 20px;
+  padding-left: 20px;
+  padding-top: 5px;
   width: calc(100% - 220px);
 }
 </style>
