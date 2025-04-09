@@ -1,19 +1,17 @@
-# README
+# Desktop Cheat Sheet
 
-## About
+Desktop application of visual cheat sheets on terminal version [Terminal Cheat Sheet](https://github.com/mvrpl/Terminal-Cheat-Sheet).
+## Screenshots
 
-This is the official Wails Vue-TS template.
+#### Apple Mac OS X
+![App Mac OS X](https://i.imgur.com/oIhJ0C3.png)
 
-You can configure the project by editing `wails.json`. More information about the project settings can be found
-here: https://wails.io/docs/reference/project-config
+#### Microsoft Windows
+![App Windows]()
+## Operation System Support
 
-## Live Development
+- [Windows 10 and 11](https://github.com/mvrpl/Desktop-Cheat-Sheet/releases/latest/download/Desktop-Cheat-Sheet-amd64-installer.exe)
+- [Mac OS X Monterey+](https://github.com/mvrpl/Desktop-Cheat-Sheet/releases/latest/download/Desktop-Cheat-Sheet.pkg)
+## Author
 
-To run in live development mode, run `wails dev` in the project directory. This will run a Vite development
-server that will provide very fast hot reload of your frontend changes. If you want to develop in a browser
-and have access to your Go methods, there is also a dev server that runs on http://localhost:34115. Connect
-to this in your browser, and you can call your Go code from devtools.
-
-## Building
-
-To build a redistributable, production mode package, use `wails build`.
+- [@mvrpl](https://www.github.com/mvrpl)
