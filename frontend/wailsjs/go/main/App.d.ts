@@ -4,3 +4,5 @@
 export function GetCheatSheet(arg1:string):Promise<string>;
 
 export function GetPrograms():Promise<string>;
+
+export function GetVersion():Promise<string>;

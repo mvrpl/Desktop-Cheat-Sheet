@@ -4,14 +4,18 @@ import (
 	"context"
 	"database/sql"
 	"encoding/json"
+	"io/ioutil"
+	"log"
 	"os"
+	"runtime"
 
 	_ "github.com/mattn/go-sqlite3"
 )
 
 type App struct {
-	ctx context.Context
-	db  *sql.DB
+	ctx     context.Context
+	db      *sql.DB
+	version string
 }
 
 func check(e error) {
@@ -26,6 +30,19 @@ func NewApp() *App {
 
 func (a *App) startup(ctx context.Context) {
 	home, _ := os.UserHomeDir()
+
+	content, err := ioutil.ReadFile("./wails.json")
+	if err != nil {
+		log.Fatal("Error when opening file: ", err)
+	}
+	var payload map[string]interface{}
+	err = json.Unmarshal(content, &payload)
+	if err != nil {
+		log.Fatal("Error during Unmarshal(): ", err)
+	}
+	infos := payload["info"].(map[string]interface{})
+
+	a.version = "v" + infos["productVersion"].(string) + " - " + runtime.GOOS + " - " + runtime.GOARCH
 
 	a.ctx = ctx
 	if _, err := os.Stat(home + string(os.PathSeparator) + ".cheat_sheets.db"); os.IsNotExist(err) {
@@ -55,6 +72,10 @@ func (a *App) GetPrograms() string {
 	check(err)
 
 	return string(jsonData)
+}
+
+func (a *App) GetVersion() string {
+	return a.version
 }
 
 func (a *App) GetCheatSheet(program string) string {

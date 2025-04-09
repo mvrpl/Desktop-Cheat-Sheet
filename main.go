@@ -39,7 +39,7 @@ func main() {
 			},
 			About: &mac.AboutInfo{
 				Title:   "Desktop Cheat Sheet",
-				Message: "© @mvrpl_br",
+				Message: app.version + " | © mvrpl_br",
 			},
 		},
 	})

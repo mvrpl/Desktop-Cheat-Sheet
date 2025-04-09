@@ -9,3 +9,7 @@ export function GetCheatSheet(arg1) {
 export function GetPrograms() {
   return window['go']['main']['App']['GetPrograms']();
 }
+
+export function GetVersion() {
+  return window['go']['main']['App']['GetVersion']();
+}

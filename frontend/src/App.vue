@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { reactive } from 'vue'
-import { GetPrograms, GetCheatSheet } from '../wailsjs/go/main/App'
+import { GetPrograms, GetCheatSheet, GetVersion } from '../wailsjs/go/main/App'
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
-import Menu from 'primevue/menu';
 
 const data = reactive({
+  app_version: "",
   programs: [],
   currentContent: JSON.parse('{"Selecione um software no menu!": []}')
 })
@@ -15,6 +15,13 @@ function changeContent(content: string) {
     data.currentContent = JSON.parse(result)
   })
 }
+
+function AppVersion() {
+  GetVersion().then(result => {
+    data.app_version = result
+  })
+}
+AppVersion()
 
 function listPrograms() {
   GetPrograms().then(result => {
@@ -29,6 +36,9 @@ listPrograms()
     <div class="vertical-menu">
       <a v-for="program in data.programs" :key="program" href="#" @click="changeContent(program)">{{ program }}</a>
       <br>
+      <footer>
+        <p class="app_footer">{{ data.app_version }}</p>
+      </footer>
     </div>
     <div v-for="(value, key) in data.currentContent" class="content-area">
       <h4>{{ key }}</h4>

@@ -21,3 +21,7 @@ body {
 .p-datatable .p-datatable-thead {
     display: none;
 }
+
+.app_footer {
+    font-size: smaller;
+}
