@@ -4,8 +4,6 @@ import (
 	"context"
 	"database/sql"
 	"encoding/json"
-	"io/ioutil"
-	"log"
 	"os"
 	"runtime"
 
@@ -31,18 +29,7 @@ func NewApp() *App {
 func (a *App) startup(ctx context.Context) {
 	home, _ := os.UserHomeDir()
 
-	content, err := ioutil.ReadFile("./wails.json")
-	if err != nil {
-		log.Fatal("Error when opening file: ", err)
-	}
-	var payload map[string]interface{}
-	err = json.Unmarshal(content, &payload)
-	if err != nil {
-		log.Fatal("Error during Unmarshal(): ", err)
-	}
-	infos := payload["info"].(map[string]interface{})
-
-	a.version = "v" + infos["productVersion"].(string) + " - " + runtime.GOOS + " - " + runtime.GOARCH
+	a.version = "v0.2.1" + " - " + runtime.GOOS + " - " + runtime.GOARCH
 
 	a.ctx = ctx
 	if _, err := os.Stat(home + string(os.PathSeparator) + ".cheat_sheets.db"); os.IsNotExist(err) {
