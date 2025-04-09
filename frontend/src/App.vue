@@ -52,6 +52,7 @@ listPrograms()
   height: 100vh;
   padding: 10px;
   position: fixed;
+  margin-top: 20px;
   overflow-y: scroll;
   overflow-x: hidden;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -67,6 +68,6 @@ listPrograms()
   margin-left: 220px;
   padding-left: 20px;
   padding-top: 5px;
-  width: calc(100% - 220px);
+  width: calc(100% - 250px);
 }
 </style>
