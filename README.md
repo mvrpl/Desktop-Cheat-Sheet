@@ -7,7 +7,7 @@ Desktop application of visual cheat sheets on terminal version [Terminal Cheat S
 ![App Mac OS X](https://i.imgur.com/oIhJ0C3.png)
 
 #### Microsoft Windows
-![App Windows](https://i.imgur.com/cKbCDIJ.png)
+![App Windows](https://i.imgur.com/bwJKbww.png)
 ## Operation System Support
 
 - [Windows 10 and 11](https://github.com/mvrpl/Desktop-Cheat-Sheet/releases/latest/download/Desktop-Cheat-Sheet-amd64-installer.exe)
