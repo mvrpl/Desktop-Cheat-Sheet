@@ -35,11 +35,16 @@ func main() {
 		},
 		Mac: &mac.Options{
 			TitleBar: &mac.TitleBar{
-				TitlebarAppearsTransparent: true,
+				TitlebarAppearsTransparent: false,
+                HideTitle:                  false,
+                HideTitleBar:               false,
+                FullSizeContent:            false,
+                UseToolbar:                 false,
+                HideToolbarSeparator:       true,
 			},
 			About: &mac.AboutInfo{
 				Title:   "Desktop Cheat Sheet",
-				Message: app.version + " | © mvrpl_br",
+				Message: "© mvrpl_br",
 			},
 		},
 	})

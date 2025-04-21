@@ -29,7 +29,7 @@ func NewApp() *App {
 func (a *App) startup(ctx context.Context) {
 	home, _ := os.UserHomeDir()
 
-	a.version = "v0.2.2" + " - " + runtime.GOOS + " - " + runtime.GOARCH
+	a.version = "v0.2.3" + " - " + runtime.GOOS + " - " + runtime.GOARCH
 
 	a.ctx = ctx
 	if _, err := os.Stat(home + string(os.PathSeparator) + ".cheat_sheets.db"); os.IsNotExist(err) {

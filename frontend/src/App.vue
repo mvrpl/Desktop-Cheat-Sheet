@@ -62,7 +62,6 @@ listPrograms()
   height: 100vh;
   padding: 10px;
   position: fixed;
-  margin-top: 20px;
   overflow-y: scroll;
   overflow-x: hidden;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
